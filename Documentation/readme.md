@@ -23,7 +23,6 @@ Interfaces
     * object Train { get; }
     * void Save(string path);
     * void Load(string path);
-  *
 
 Klasser
   * TrackDescription
