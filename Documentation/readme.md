@@ -49,3 +49,16 @@ Filer
   * TrainTrack 1
   * TrainTrack 2
   * TrainTrack 3
+
+Ett tåg är en kopp. ett tåg kan innehålla obegränsat med ingredienser som här är stationer. 
+En TimeTable är då ett recept liknande espressomaskinen. Skillnaden är att tåget i det här fallet ska kunna köra igenom från punkt till punkt.
+TimeTable kan representera ett gäng larm, som en klocka som talar om att tåget ska komma till givna punkter på given tidpunkt.
+Station 1 - Larm 1, Station 2 - Larm 2 osv.
+Tåg är nåt fysiskt som vi inte exakt kan simulera. Vi kan göra tåget som en till klocka som vi kan använda för att stämma av mot TimeTable.
+Om tåget kommit i tid så stämmer det, annars inte.
+Tåget går från A - B vi säger 100 km. så kan vi räkna ut hur lång tid det tar från för tåget att färdas. Sen kan vi lägga till väntetider på stationerna för att räkna ut hur fort tåget måste köra mellan stationerna.
+Kan gå att lösa tågfärd, tågstopp med thredding. Vi kan nog köra med 3 trådar som jobbar med varandra.
+Tråd 1 start
+tråd 2 färd
+tråd 3 stationsstopp
+Ex: Start tråd 1 -> färd tråd 2 -> färd -> färd -> tråd 1 -> stationsstopp tråd 3 -> tråd 3 -> tråd 3 -> fortsätt tråd 1 -> tråd 2 -> tråd 2 -> Stopp tråd 1.
