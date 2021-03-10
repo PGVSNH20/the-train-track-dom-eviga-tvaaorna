@@ -1,4 +1,6 @@
 ﻿using System;
+using TrainEngine;
+using System.Collections.Generic;
 
 namespace TrainConsole
 {
@@ -8,12 +10,28 @@ namespace TrainConsole
         {
             Console.WriteLine("Train track!");
             // Step 1:
+            // Create Fluent API
+
+            Train train1 = new Train(2, "Golden Arrow", 120, true);
+            Station station1 = new Station(1, "Stonecro", true);
+            Station station2 = new Station(2, "Mount Juanceo", false);
+            List<Passenger> passengers = new List<Passenger>();
+
+            ITravelPlan travelPlan = new TrainPlanner(train1, station1)
+                .HeadTowards(station2)
+                .StartTrainAt("10:22")
+                .StopTrainAt(station2, "14:52")
+            .GeneratePlan();
+            
+
+
+            // Step 2:
             // Parse the traintrack (Data/traintrack.txt) using ORM (see suggested code)
             // Parse the trains (Data/trains.txt)
 
-            // Step 2:
+            // Step 3:
             // Make the trains run in treads
-
+            
             #region PseudoCode
             /*
              //////////////////////////////////////////////////////////////////

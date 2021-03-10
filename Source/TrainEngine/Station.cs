@@ -4,12 +4,17 @@ using System.Text;
 
 namespace TrainEngine
 {
-    class Station
+    public class Station
     {
-        public string name { get; }
-        public Station(string name)
-        {
+        public int ID { get; }
+        public string StationName { get; }
+        public bool EndStation { get; }
 
+        public Station(int id, string stationName, bool endStation)
+        {
+            ID = id;
+            StationName = stationName;
+            EndStation = endStation;
         }
     }
 }
