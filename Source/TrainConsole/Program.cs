@@ -12,18 +12,22 @@ namespace TrainConsole
             // Step 1:
             // Create Fluent API
 
-            Train train1 = new Train(2, "Golden Arrow", 120, true);
-            Station station1 = new Station(1, "Stonecro", true);
-            Station station2 = new Station(2, "Mount Juanceo", false);
             List<Passenger> passengers = new List<Passenger>();
 
-            ITravelPlan travelPlan = new TrainPlanner(train1, station1)
-                .HeadTowards(station2)
-                .StartTrainAt("10:22")
-                .StopTrainAt(station2, "14:52")
-            .GeneratePlan();
-            
+            TimeTable timeTable1 = new TimeTable(2, 2, new TimeSpan(10, 0, 0), new TimeSpan(11, 0, 0));
+            Train train1 = new Train(2, "Golden Arrow", 120, true);
 
+            Station station1 = new Station(1, "Stonecro", true);
+            Station station2 = new Station(2, "Mount Juanceo", false);
+
+
+
+
+            //ITravelPlan travelPlan = new TrainPlanner()
+            //    .NextStation(station2)
+            //    .StartStation("10:22")
+            //    .EndStation(station2, "14:52")
+            //.GeneratePlan();
 
             // Step 2:
             // Parse the traintrack (Data/traintrack.txt) using ORM (see suggested code)
@@ -31,7 +35,7 @@ namespace TrainConsole
 
             // Step 3:
             // Make the trains run in treads
-            
+
             #region PseudoCode
             /*
              //////////////////////////////////////////////////////////////////
