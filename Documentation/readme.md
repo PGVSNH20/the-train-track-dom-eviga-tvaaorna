@@ -62,3 +62,18 @@ Tråd 1 start
 tråd 2 färd
 tråd 3 stationsstopp
 Ex: Start tråd 1 -> färd tråd 2 -> färd -> färd -> tråd 1 -> stationsstopp tråd 3 -> tråd 3 -> tråd 3 -> fortsätt tråd 1 -> tråd 2 -> tråd 2 -> Stopp tråd 1.
+
+En trainplanner visar upp alla tåg som kör och kan se om tågen kan köras. Komplicerat!!
+
+Vart hör grejorna hemma?
+ * Ska metoderna NextStation, StartStation, EndStation och GeneratePlan ligga i TrainPlanner, train eller TimeTable?
+ * TrainPlanner är kanske vart tåget ska åka någonstans eller i TimeTablen?
+ * Kan vi stoppa in alla trains med respektive timeplan i TrainPlanner?
+ * Operatören kollar om/när tågen kan åka. Så vad behöver han?
+ * Vi vill ha lättåtkomst till tågen och passagerarna.
+ * Hur viktig är TrainPlanner eller TimeTablen?
+
+1 Vi provar med att koppla in TimeTable i Train. TimeTablen kan vara null.
+   * Vi gör en funktion som lägger in värden i listan AddTimeTable
+Detta funkade inte optimalt så vi lägger in listan på TimeTable och Train in i TrainPlanner och låter TrainPlanner sköta allt. Vi kommer att byta dessa listor när vi kör ORM.
+Vi kommer att ändra på tillgängligheten på allt så småningom när vi får det att funka.
