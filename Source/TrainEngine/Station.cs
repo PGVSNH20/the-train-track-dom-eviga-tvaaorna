@@ -6,5 +6,9 @@ namespace TrainEngine
 {
     class Station
     {
+        public Station(string name)
+        {
+
+        }
     }
 }

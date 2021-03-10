@@ -4,7 +4,11 @@ using System.Text;
 
 namespace TrainEngine
 {
-    class TrainPlaner
+    class TrainPlanner
     {
+        public TrainPlanner(object train, object station)
+        {
+
+        }
     }
 }
