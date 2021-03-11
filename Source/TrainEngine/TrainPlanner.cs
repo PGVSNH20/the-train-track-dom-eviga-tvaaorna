@@ -13,38 +13,40 @@ namespace TrainEngine
     {
         public List<TimeTable> TimeTables { get; set; }
         public List<Train> Trains { get; }
-
         public TrainPlanner()
         {
-            TimeTables = new List<TimeTable>(); //Byt ut dessa två när vi fixat ORM
-            Trains = new List<Train>();
+            //TimeTables = new List<TimeTable>(); //Byt ut dessa två när vi fixat ORM
+            //Trains = new List<Train>();
 
-            Trains.Add(new Train(0, "Nissetåget", 200, true));
-            TimeTables.Add((new TimeTable(0, 1, new TimeSpan(12, 0, 0), new TimeSpan(13, 0, 0))));
-            TimeTables.Add((new TimeTable(0, 2, new TimeSpan(13, 0, 0), new TimeSpan(14, 0, 0))));
+            //Trains.Add(new Train(0, "Nissetåget", 200, true));
+            //TimeTables.Add((new TimeTable(0, 1, new TimeSpan(12, 0, 0), new TimeSpan(13, 0, 0))));
+            //TimeTables.Add((new TimeTable(0, 2, new TimeSpan(13, 0, 0), new TimeSpan(14, 0, 0))));
 
-            Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables));
-            //Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables.Where(t => t.TrainID == 0) as List<TimeTable>));
-            backgroundThread.Start();
+            //Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables));
+            ////Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables.Where(t => t.TrainID == 0) as List<TimeTable>));
+            //backgroundThread.Start();
         }
 
         #region Fluent
 
         public TrainPlanner NextStation(Station station2)
         {
-
+            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+            return this;
             throw new NotImplementedException();
         }
 
         public TrainPlanner StartStation(string time)
         {
-
+            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+            return this;
             throw new NotImplementedException();
         }
 
         public TrainPlanner EndStation(Station station, string time)
         {
-
+            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+            return this;
             throw new NotImplementedException();
         }
 
