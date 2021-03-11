@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace TrainEngine
 {
+    /// <summary>
+    /// This is an API for Mr.Carlos, codename Operator
+    /// </summary>
     public class TrainPlanner : ITravelPlan
     {
         public List<TimeTable> TimeTables { get; set; }
@@ -18,8 +21,11 @@ namespace TrainEngine
 
             Trains.Add(new Train(0, "Nissetåget", 200, true));
             TimeTables.Add((new TimeTable(0, 1, new TimeSpan(12, 0, 0), new TimeSpan(13, 0, 0))));
+            TimeTables.Add((new TimeTable(0, 2, new TimeSpan(13, 0, 0), new TimeSpan(14, 0, 0))));
 
-            //Thread backgroundThread = new Thread(new ThreadStart(ExecutePlan(TimeTables.Where(t => t.TrainID == 0) as List<TimeTable>)));
+            Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables));
+            //Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables.Where(t => t.TrainID == 0) as List<TimeTable>));
+            backgroundThread.Start();
         }
 
         #region Fluent
@@ -52,10 +58,10 @@ namespace TrainEngine
 
         public void ExecutePlan(List<TimeTable> plan)
         {
-            for (int i = 0; i < plan.Count; i++)
+            foreach (var t in plan)
             {
                 Thread.Sleep(1000);
-                Console.WriteLine($"Arrived at {plan[i].ArrivalTime} to station {plan[i].StationID}");
+                Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {t.ArrivalTime} to station {t.StationID}");
             }
         }
 

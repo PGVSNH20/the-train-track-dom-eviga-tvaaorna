@@ -1,6 +1,7 @@
 ﻿using System;
 using TrainEngine;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TrainConsole
 {
@@ -20,8 +21,8 @@ namespace TrainConsole
             Station station1 = new Station(1, "Stonecro", true);
             Station station2 = new Station(2, "Mount Juanceo", false);
 
-
-
+            TrainPlanner tp = new TrainPlanner();
+            
 
             //ITravelPlan travelPlan = new TrainPlanner()
             //    .NextStation(station2)
@@ -37,6 +38,7 @@ namespace TrainConsole
             // Make the trains run in treads
 
             #region PseudoCode
+
             /*
              //////////////////////////////////////////////////////////////////
             ---LOADING EVERYTHING NEEDED--- Own function(s) to avoid clutter?
@@ -73,6 +75,7 @@ namespace TrainConsole
             -Time passed using Thread.Sleep?
             -Operator/Carlos gives the go when a train can keep moving?
             */
+
             #endregion
         }
     }
