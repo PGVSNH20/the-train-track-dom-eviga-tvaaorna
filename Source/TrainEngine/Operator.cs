@@ -9,7 +9,7 @@ namespace TrainEngine
         // mr. Carlos (Mulle Meck?)
 
         //Gets a list with timetables
-        //Create plans for trains using timetables (trainplanner API)
+        //Can create/save new timetables
         //Assign plans to trains here, not in trainplanner, nuh uh
         //He needs the POWER...to start and stop trains
         //So he also needs a way to check the track for issues
@@ -20,7 +20,7 @@ namespace TrainEngine
 
         public Operator()
         {
-
+            timeTables = TimeTable.Load();
         }
 
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)

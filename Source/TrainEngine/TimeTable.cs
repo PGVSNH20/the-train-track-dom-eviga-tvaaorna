@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -10,10 +11,10 @@ namespace TrainEngine
     {
         public virtual int TrainID { get; }
         public virtual int StationID { get; }
-        public virtual TimeSpan DepartureTime { get; }
-        public virtual TimeSpan ArrivalTime { get; }
+        public virtual TimeSpan? DepartureTime { get; }
+        public virtual TimeSpan? ArrivalTime { get; }
 
-        public TimeTable(int trainID, int stationID, TimeSpan departureTime, TimeSpan arrivalTime)
+        public TimeTable(int trainID, int stationID, TimeSpan? departureTime, TimeSpan? arrivalTime)
         {
             TrainID = trainID;
             StationID = stationID;
@@ -21,25 +22,54 @@ namespace TrainEngine
             ArrivalTime = arrivalTime;
         }
 
-        public List<TimeTable> Load()
+        public static List<TimeTable> Load()
         {
-            if (File.Exists("Data/timetable.txt"))
+            string path = "Data/timetable.txt";
+
+            try
             {
-                string[] data = File.ReadAllLines("Data/timetable.txt");
+                string[] data = File.ReadAllLines(path);
                 List<TimeTable> result = new List<TimeTable>();
 
-                foreach (var line in data)
+                foreach (var line in data.Skip(1))
                 {
                     string[] content = line.Split(',');
-                    int newID; //continue later
-                    Int32.TryParse(content[0], out newID);
-                    TimeTable current = new TimeTable();
+
+                    int.TryParse(content[0], out var newTrainId);
+                    int.TryParse(content[1], out var newStationId);
+                    
+                    string[] timeSplit = content[2].Split(':');
+                    TimeSpan? newDepartureTime = null;
+                    if (timeSplit[0] != "null")
+                    {
+                        newDepartureTime = new TimeSpan(int.Parse(timeSplit[0]), int.Parse(timeSplit[1]), 0);
+                    }
+
+                    timeSplit = content[3].Split(':');
+                    TimeSpan? newArrivalTime = null;
+                    if (timeSplit[0] != "null")
+                    {
+                        newArrivalTime = new TimeSpan(int.Parse(timeSplit[0]), int.Parse(timeSplit[1]), 0);
+                    }
+
+                    TimeTable current = new TimeTable(
+                        newTrainId,
+                        newStationId,
+                        newDepartureTime,
+                        newArrivalTime);
+
+                    result.Add(current);
                 }
+
+                return result;
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("Error reading file");
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
             }
+
+            throw new Exception("Encountered an error while loading file");
         }
     }
 }
