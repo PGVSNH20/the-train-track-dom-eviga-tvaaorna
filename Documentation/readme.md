@@ -77,3 +77,14 @@ Vart hör grejorna hemma?
    * Vi gör en funktion som lägger in värden i listan AddTimeTable
 Detta funkade inte optimalt så vi lägger in listan på TimeTable och Train in i TrainPlanner och låter TrainPlanner sköta allt. Vi kommer att byta dessa listor när vi kör ORM.
 Vi kommer att ändra på tillgängligheten på allt så småningom när vi får det att funka.
+
+Tankar om Carlos Meck
+        * Gets a list with timetables
+        * Create plans for trains using timetables (trainplanner API)
+        * Assign plans to trains here, not in trainplanner, nuh uh
+        * He needs the POWER...to start and stop trains
+        * So he also needs a way to check the track for issues
+        * Om det snöar en decimeter, stäng ner allt!!! LAPPMÖGEL!!!
+        * Behöver öråd för att bestämma om Mr.Carlos är egentligen Mulle Meck
+
+        //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
