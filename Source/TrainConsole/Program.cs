@@ -13,16 +13,20 @@ namespace TrainConsole
             // Step 1:
             // Create Fluent API
 
-            List<Passenger> passengers = new List<Passenger>();
+            //List<Passenger> passengers = new List<Passenger>();
 
-            TimeTable timeTable1 = new TimeTable(2, 2, new TimeSpan(10, 0, 0), new TimeSpan(11, 0, 0));
-            Train train1 = new Train(2, "Golden Arrow", 120, true);
+            //TimeTable timeTable1 = new TimeTable(2, 2, new TimeSpan(10, 0, 0), new TimeSpan(11, 0, 0));
+            //Train train1 = new Train(2, "Golden Arrow", 120, true);
 
-            Station station1 = new Station(1, "Stonecro", true);
-            Station station2 = new Station(2, "Mount Juanceo", false);
+            //Station station1 = new Station(1, "Stonecro", true);
+            //Station station2 = new Station(2, "Mount Juanceo", false);
 
-            TrainPlanner tp = new TrainPlanner();
-            
+            //TrainPlanner tp = new TrainPlanner();
+
+            Operator carlos = new Operator();
+
+
+            #region PseudoCode
 
             //ITravelPlan travelPlan = new TrainPlanner()
             //    .NextStation(station2)
@@ -36,8 +40,6 @@ namespace TrainConsole
 
             // Step 3:
             // Make the trains run in treads
-
-            #region PseudoCode
 
             /*
              //////////////////////////////////////////////////////////////////

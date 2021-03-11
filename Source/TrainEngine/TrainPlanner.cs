@@ -9,11 +9,17 @@ namespace TrainEngine
     /// <summary>
     /// This is an API for Mr.Carlos, codename Operator
     /// </summary>
-    public class TrainPlanner : ITravelPlan
+    public class TrainPlanner : ITrainPlanner
     {
         public List<TimeTable> TimeTables { get; set; }
         public List<Train> Trains { get; }
-        public TrainPlanner()
+
+        public int TrainID { get; set; }
+        public int StationID { get; set; }
+        public TimeSpan DepartureTime { get; set; }
+        public TimeSpan ArrivalTime { get; set; }
+
+        public TrainPlanner() //Espressomachine
         {
             //TimeTables = new List<TimeTable>(); //Byt ut dessa två när vi fixat ORM
             //Trains = new List<Train>();
@@ -31,29 +37,26 @@ namespace TrainEngine
 
         public TrainPlanner NextStation(Station station2)
         {
-            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+
             return this;
-            throw new NotImplementedException();
         }
 
-        public TrainPlanner StartStation(string time)
+        public TrainPlanner StartStation(TimeSpan time)
         {
-            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+            DepartureTime = time;
             return this;
-            throw new NotImplementedException();
         }
 
-        public TrainPlanner EndStation(Station station, string time)
+        public TrainPlanner EndStation(int station, TimeSpan time)
         {
-            Ingredients.Add(new Ingredient() { Name = name, Amount = amount });
+            StationID = station;
+            ArrivalTime = time;
             return this;
-            throw new NotImplementedException();
         }
 
-        public ITravelPlan GeneratePlan()
+        public TimeTable GeneratePlan()
         {
-
-            throw new NotImplementedException();
+            return new TimeTable(TrainID, StationID, DepartureTime, ArrivalTime);
         }
 
         #endregion
@@ -62,7 +65,7 @@ namespace TrainEngine
         {
             foreach (var t in plan)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(1000); //fix time
                 Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {t.ArrivalTime} to station {t.StationID}");
             }
         }
