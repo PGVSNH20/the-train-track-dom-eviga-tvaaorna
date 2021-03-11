@@ -78,6 +78,8 @@ Vart hör grejorna hemma?
 Detta funkade inte optimalt så vi lägger in listan på TimeTable och Train in i TrainPlanner och låter TrainPlanner sköta allt. Vi kommer att byta dessa listor när vi kör ORM.
 Vi kommer att ändra på tillgängligheten på allt så småningom när vi får det att funka.
 
+
+
 Tankar om Carlos Meck
    * Gets a list with timetables
    * Create plans for trains using timetables (trainplanner API)
