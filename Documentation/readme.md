@@ -96,3 +96,11 @@ Tankar om tracks
  * Vid till exempel en korsning så kan man se till att checka traintracksen efter hinder och annat i vägen.
  * Allt är noder.
  * 
+
+Nästa steg är:
+ * Fixa läsning av tracks (false)
+ * Skriv till fil (false)
+ * Få tågen att röra sig efter banan (false)
+ * Fixa klocka (false)
+ * Få till mer avancerat track (false)
+ * Starta stoppa (false)
