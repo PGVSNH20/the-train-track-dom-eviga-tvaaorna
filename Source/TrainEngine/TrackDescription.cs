@@ -2,7 +2,7 @@
 
 namespace TrainEngine
 {
-    public class TrackDescription
+    public class Track
     {
         public int NumberOfTrackParts { get; set; }
     }
