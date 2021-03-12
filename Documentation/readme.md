@@ -90,3 +90,17 @@ Tankar om Carlos Meck
    * Behöver öråd för att bestämma om Mr.Carlos är egentligen Mulle Meck
 
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
+
+Tankar om tracks
+ * Antingen så kan varje trackpeace länka till den som är före och efter för att kedja dom
+ * Vid till exempel en korsning så kan man se till att checka traintracksen efter hinder och annat i vägen.
+ * Allt är noder.
+ * 
+
+Nästa steg är:
+ * Fixa läsning av tracks (false)
+ * Skriv till fil (false)
+ * Få tågen att röra sig efter banan (false)
+ * Fixa klocka (false)
+ * Få till mer avancerat track (false)
+ * Starta stoppa (false)
