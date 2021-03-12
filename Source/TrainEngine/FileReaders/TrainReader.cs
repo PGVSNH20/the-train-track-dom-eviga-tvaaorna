@@ -17,6 +17,7 @@ namespace TrainEngine.FileReaders
                     {
                         string line;
 
+                        line = streamReader.ReadLine();
                         while ((line = streamReader.ReadLine()) != null)
                         {
                             string[] content = line.Split(',');
