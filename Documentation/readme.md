@@ -95,6 +95,12 @@ Tankar om tracks
  * Antingen så kan varje trackpeace länka till den som är före och efter för att kedja dom
  * Vid till exempel en korsning så kan man se till att checka traintracksen efter hinder och annat i vägen.
  * Allt är noder.
+ * Vi skapade en klass som vi döpte till Track där vi funderar på vad den ska ha för funktioner
+ * Vi behöver en modell för en trackpiece
+ * Vi skapade Track och TrackManager och vi behöver definiera vad dom ska innehålla
+ * Track ska se vilka trackPieces som ligger bredvid varandra och vad som finns på stationen och om den är passerbar.
+ * TrackManager ska ha funktioner för att till exempel ta reda på vad som finns på Track
+ * StationID kan bytas ut till t.ex. ett ID som länkar till en lista som innehåller alla objekt som kan finnas på vårat tågspår (t.ex. stationer, korsningar, bommar).
  * 
 
 Nästa steg är:
@@ -104,3 +110,4 @@ Nästa steg är:
  * Fixa klocka (false)
  * Få till mer avancerat track (false)
  * Starta stoppa (false)
+
