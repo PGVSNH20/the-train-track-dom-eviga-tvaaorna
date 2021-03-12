@@ -21,6 +21,7 @@ namespace TrainEngine
         private List<Passenger> passengers;
         private List<Station> stations;
         private List<Train> trains;
+        private TrackManager track = new TrackManager();
 
         public Operator()
         {

@@ -13,7 +13,6 @@ namespace TrainEngine
     {
         public List<TimeTable> TimeTables { get; set; }
         public List<Train> Trains { get; }
-
         public int TrainID { get; set; }
         public int StationID { get; set; }
         public TimeSpan DepartureTime { get; set; }

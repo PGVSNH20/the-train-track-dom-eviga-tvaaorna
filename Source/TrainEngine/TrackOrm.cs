@@ -4,7 +4,7 @@ namespace TrainEngine
 {
     public class TrackOrm
     {
-        public TrackDescription ParseTrackDescription(string track)
+        public Track ParseTrackDescription(string track)
         {
             throw new NotImplementedException();
         }
