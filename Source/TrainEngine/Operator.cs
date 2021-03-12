@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TrainEngine.FileReaders;
 
 namespace TrainEngine
 {
@@ -18,11 +19,15 @@ namespace TrainEngine
 
         private List<TimeTable> timeTables;
         private List<Passenger> passengers;
+        private List<Station> stations;
+        private List<Train> trains;
 
         public Operator()
         {
             timeTables = TimeTable.Load();
-            passengers = PassengerReader.Load();           
+            passengers = PassengerReader.Load();
+            stations = StationReader.Load();
+            trains = TrainReader.Load();
         }
         
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
