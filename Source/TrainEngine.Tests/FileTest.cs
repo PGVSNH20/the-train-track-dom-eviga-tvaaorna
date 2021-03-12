@@ -13,24 +13,25 @@ namespace TrainEngine.Tests
         [Fact]
         public void CanReadTimeTable()
         {
-            private List<Passenger> timeTables;
-            timeTables = TimeTable.Load();
-            Assert.NotNull(timeTables);
+            //private List<Passenger> timeTables;
+            //timeTables = TimeTable.Load();
+            //Assert.NotNull(timeTables);
+            Assert.True(false);
         }
         [Fact]
         public void CanReadStations()
         {
-
+            Assert.True(false);
         }
         [Fact]
         public void CanReadPassengers()
         {
-            Assert.
+            Assert.True(false);
         }
         [Fact]
         public void CanReadTrains()
         {
-
+            Assert.True(false);
         }
     }
 }
