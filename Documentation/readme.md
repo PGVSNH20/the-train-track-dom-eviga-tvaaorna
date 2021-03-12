@@ -104,7 +104,7 @@ Tankar om tracks
  * 
 
 Nästa steg är:
- * Fixa läsning av tracks (false)
+ * Fixa läsning av tracks (true)(Tror Johan fixade den.)
  * Skriv till fil (false)
  * Få tågen att röra sig efter banan (false)
  * Fixa klocka (false)
