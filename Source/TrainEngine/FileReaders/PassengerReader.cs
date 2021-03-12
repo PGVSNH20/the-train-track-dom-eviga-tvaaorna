@@ -28,7 +28,7 @@ namespace TrainEngine
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
+                Console.WriteLine("The file " + url + " could not be read:");
                 Console.WriteLine(e.Message);
                 return PassengerList;
             }
