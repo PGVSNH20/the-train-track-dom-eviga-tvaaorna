@@ -13,7 +13,7 @@ namespace TrainEngine
         public virtual int StationID { get; }
         public virtual TimeSpan? DepartureTime { get; }
         public virtual TimeSpan? ArrivalTime { get; }
-
+            
         public TimeTable(int trainID, int stationID, TimeSpan? departureTime, TimeSpan? arrivalTime)
         {
             TrainID = trainID;

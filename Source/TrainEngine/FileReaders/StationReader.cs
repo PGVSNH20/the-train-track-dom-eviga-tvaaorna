@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TrainEngine
+namespace TrainEngine.FileReaders
 {
-    class FileReader
+    class StationReader
     {
-
     }
 }

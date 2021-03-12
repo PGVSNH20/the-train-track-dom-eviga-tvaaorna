@@ -17,12 +17,14 @@ namespace TrainEngine
         //Behöver öråd för att bestämma om Mr.Carlos är egentligen Mulle Meck
 
         private List<TimeTable> timeTables;
+        private List<Passenger> passengers;
 
         public Operator()
         {
             timeTables = TimeTable.Load();
+            passengers = PassengerReader.Load();           
         }
-
+        
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
 
 
