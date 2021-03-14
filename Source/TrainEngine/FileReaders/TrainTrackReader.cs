@@ -19,10 +19,32 @@ namespace TrainEngine.FileReaders
 
                     while ((line = streamReader.ReadLine()) != null)
                     {
-                        string[] content = line.Split(',');
+                        int stationID;
+                        bool isCrossing = false;
+                        int trackID = -1;
 
+                        Console.WriteLine(line);
+                        char[] trackNodes = line.ToCharArray();
 
-                        //TrackList.Add(new Track(int.Parse(content[0]), content[1], int.Parse(content[2]), bool.Parse(content[3])));
+                        foreach(var node in trackNodes)
+                        {
+                            if (node == '[' || node == ']')
+                            {
+                                continue;
+                            }
+                            else if(node == '*')
+                            {
+                                continue;
+                                //Console.WriteLine($"Train {} Start from {}");
+                            }
+                            else
+                            {
+                                int.TryParse(node.ToString(), out stationID);
+                                trackID++;
+                                //Console.WriteLine(stationID);
+                            }
+                            TrackList.Add(new Track(trackID, stationID, trackID, trackID, isCrossing));
+                        }
                     }
                 }
                 return TrackList;
