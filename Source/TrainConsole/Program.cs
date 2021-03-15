@@ -25,6 +25,19 @@ namespace TrainConsole
 
             Operator carlos = new Operator();
 
+            // FluentSchedule är ett vektyg för mr Carlos till att skApa en tidsplan vId hjälp av C# kod
+            // Lite Skit
+            //ITrainPlanner travelPlan = new TrainPlanner(train[0], station[0])
+            //        .StartTrainAt("10:23")
+            //        .StopTrainAt(station2, "14:53")
+            //    .GeneratePlan();
+
+            //TimeTable.Save("Data/schedule.txt", travelPlan);
+
+            //var travelPlan1 = TimeTable.Load();
+
+            TimeTable.Save();
+            
 
             #region PseudoCode
 
