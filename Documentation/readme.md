@@ -105,9 +105,12 @@ Tankar om tracks
 
 Nästa steg är:
  * Fixa läsning av tracks (true)(Tror Johan fixade den.)
- * Skriv till fil (false)
- * Få tågen att röra sig efter banan (false)
+ * Skriv till fil (True)
+ * Få tågen att röra sig efter banan (semi true)
  * Fixa klocka (false)
  * Få till mer avancerat track (false)
- * Starta stoppa (false)
+ * Starta stoppa (semi true)
+ * Behöver en sortering på alla ställen där vi hanterar tidtabeller. Detta för att t.ex om tågen är ute och åker så ska de inte behöva åka bakåt eller komma 3 timmar för tidigt.    Allt ska hamna i rätt ordning. (false)
+ * Att tågen också rör sig på tågbanan och inte bara dräller runt i tidtabellerna. (false)
+ * Carlos ska kunna stoppa ett tåg. (false)
 
