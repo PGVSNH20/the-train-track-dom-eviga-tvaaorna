@@ -72,10 +72,11 @@ namespace TrainEngine
             throw new Exception("Encountered an error while loading file");
         }
 
-        public static void Save()
+        public static void Save(List<TimeTable> timeTables)
         {
+
             string path = "Data/testlog.txt";
-            List<TimeTable> timeTables = TimeTable.Load();
+            //List<TimeTable> timeTables = Load();
             
             StringBuilder content = new StringBuilder("");
             foreach (var table in timeTables)

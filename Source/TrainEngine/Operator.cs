@@ -33,10 +33,10 @@ namespace TrainEngine
             trainPlanner = new TrainPlanner(trains);
 
             //////////////////////
+            timeTables.Add(new TimeTable(2, 3, null, new TimeSpan(12, 55, 00)));
+            TimeTable.Save(timeTables);
 
             trainPlanner.StartTrains(timeTables);
-
-            TimeTable.Save();
         }
         
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
