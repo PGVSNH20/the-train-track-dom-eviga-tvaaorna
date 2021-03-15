@@ -71,5 +71,19 @@ namespace TrainEngine
 
             throw new Exception("Encountered an error while loading file");
         }
+
+        public static List<TimeTable> Save()
+        {
+            string path = "Data/controllerlog.txt";
+            List<TimeTable> timeTables = TimeTable.Load();
+
+            using (StreamWriter streamWriter = new StreamWriter(path))
+            {              
+                foreach (var timeTable in timeTables)
+                {
+                    
+                }
+            }   
+        }
     }
 }
