@@ -75,8 +75,7 @@ namespace TrainEngine
         public static void Save(List<TimeTable> timeTables)
         {
 
-            string path = "Data/testlog.txt";
-            //List<TimeTable> timeTables = Load();
+            string path = "Data/testlog.txt";            
             
             StringBuilder content = new StringBuilder("");
             foreach (var table in timeTables)
