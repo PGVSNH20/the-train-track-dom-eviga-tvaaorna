@@ -35,6 +35,8 @@ namespace TrainEngine
             //////////////////////
 
             trainPlanner.StartTrains(timeTables);
+
+            TimeTable.Save();
         }
         
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)

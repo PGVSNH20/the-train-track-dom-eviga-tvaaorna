@@ -35,8 +35,6 @@ namespace TrainConsole
             //TimeTable.Save("Data/schedule.txt", travelPlan);
 
             //var travelPlan1 = TimeTable.Load();
-
-            TimeTable.Save();
             
 
             #region PseudoCode

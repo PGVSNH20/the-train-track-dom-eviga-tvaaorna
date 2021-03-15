@@ -72,18 +72,27 @@ namespace TrainEngine
             throw new Exception("Encountered an error while loading file");
         }
 
-        public static List<TimeTable> Save()
+        public static void Save()
         {
-            string path = "Data/controllerlog.txt";
+            string path = "Data/testlog.txt";
             List<TimeTable> timeTables = TimeTable.Load();
+            
+            StringBuilder content = new StringBuilder("");
+            foreach (var table in timeTables)
+            {
+                string departure = table.DepartureTime.HasValue ? table.DepartureTime.Value.ToString(@"hh\:mm") : "null";
+                string arrival = table.ArrivalTime.HasValue ? table.ArrivalTime.Value.ToString(@"hh\:mm") : "null";
 
-            using (StreamWriter streamWriter = new StreamWriter(path))
-            {              
-                foreach (var timeTable in timeTables)
-                {
-                    
-                }
-            }   
+                string gap = ",";
+                content.Append(table.TrainID.ToString() + gap);
+                content.Append(table.StationID.ToString() + gap);
+                content.Append(departure + gap);
+                content.Append(arrival + Environment.NewLine);
+            }
+            File.WriteAllText(path, content.ToString());
+
+            //Test if it saves correctly
+            //Console.WriteLine(content);
         }
     }
 }
