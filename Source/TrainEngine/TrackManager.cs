@@ -12,10 +12,10 @@ namespace TrainEngine
         {
             tracks = TrainTrackReader.Load();
 
-            foreach(var track in tracks)
-            {
-                Console.Write(track);
-            }
+            //foreach(var track in tracks)
+            //{
+            //    Console.Write(track);
+            //}
         }
     }
 }

@@ -22,6 +22,7 @@ namespace TrainEngine
         private List<Station> stations;
         private List<Train> trains;
         private TrackManager track = new TrackManager();
+        private TrainPlanner trainPlanner;
 
         public Operator()
         {
@@ -29,6 +30,11 @@ namespace TrainEngine
             passengers = PassengerReader.Load();
             stations = StationReader.Load();
             trains = TrainReader.Load();
+            trainPlanner = new TrainPlanner(trains);
+
+            //////////////////////
+
+            trainPlanner.StartTrains(timeTables);
         }
         
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace TrainEngine
 {
@@ -10,6 +11,8 @@ namespace TrainEngine
         public string Name { get; }
         public int MaxSpeed { get; }
         public bool Operated { get; }
+        public int CurrentPosition { get; set; } //ID of current trackpiece
+        public Thread Thread { get; set; }
 
         public List<Passenger> Passengers { get; }
         
@@ -19,6 +22,7 @@ namespace TrainEngine
             Name = name;
             MaxSpeed = maxSpeed;
             Operated = operated;
+            CurrentPosition = 0;
 
             Passengers = new List<Passenger>();
         }

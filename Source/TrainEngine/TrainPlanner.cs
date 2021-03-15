@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Linq;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace TrainEngine
 {
@@ -18,18 +20,22 @@ namespace TrainEngine
         public TimeSpan DepartureTime { get; set; }
         public TimeSpan ArrivalTime { get; set; }
 
-        public TrainPlanner() //Espressomachine
+        private List<Thread> threads = new List<Thread>();
+
+        private static Timer timer;
+        private static TimeSpan clock = DateTime.Now.TimeOfDay;
+
+        public TrainPlanner(List<Train> trains) //Espressomachine
         {
-            //TimeTables = new List<TimeTable>(); //Byt ut dessa två när vi fixat ORM
-            //Trains = new List<Train>();
+            SetTimer();
 
-            //Trains.Add(new Train(0, "Nissetåget", 200, true));
-            //TimeTables.Add((new TimeTable(0, 1, new TimeSpan(12, 0, 0), new TimeSpan(13, 0, 0))));
-            //TimeTables.Add((new TimeTable(0, 2, new TimeSpan(13, 0, 0), new TimeSpan(14, 0, 0))));
+            Trains = trains;
+        }
 
-            //Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables));
-            ////Thread backgroundThread = new Thread(() => ExecutePlan(TimeTables.Where(t => t.TrainID == 0) as List<TimeTable>));
-            //backgroundThread.Start();
+        ~TrainPlanner()
+        {
+            timer.Stop();
+            timer.Dispose();
         }
 
         #region Fluent
@@ -60,27 +66,67 @@ namespace TrainEngine
 
         #endregion
 
-        public void ExecutePlan(List<TimeTable> plan)
+        public void StartTrains(List<TimeTable> timeTables)
         {
-            foreach (var t in plan)
+            HashSet<int> trainIDs = new HashSet<int>();
+            foreach (var tt in timeTables)
             {
-                Thread.Sleep(1000); //fix time
-                Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {t.ArrivalTime} to station {t.StationID}");
+                if (!trainIDs.Contains(tt.TrainID))
+                {
+                    trainIDs.Add(tt.TrainID);
+                }
+            }
+
+            foreach (var trainID in trainIDs)
+            {
+                var currentTimeTables = timeTables.Where(t => t.TrainID == trainID).ToList();
+                var newThread = Trains.Find(x => x.ID == trainID).Thread = new Thread(() => ExecutePlan(currentTimeTables));
+
+                Console.WriteLine(Trains.Find(x => x.ID == trainID).Thread.Name);
+
+                threads.Add(newThread);
+                newThread.Start();
             }
         }
 
-        public void Save(string path)
+        public void ExecutePlan(List<TimeTable> plan) //TODO: Time based on travel-distance with track-pieces
         {
+            //TODO: Only once
+            clock = plan[0].DepartureTime.GetValueOrDefault();
 
-            throw new NotImplementedException();
+            TimeSpan? actualArrivalTime = null;
+            //Sort somewhere
+            foreach (var t in plan)
+            {
+                int idleTime = (int)ConvertTime(t.ArrivalTime.GetValueOrDefault()).TotalMilliseconds -
+                               (int)ConvertTime(actualArrivalTime.GetValueOrDefault()).TotalMilliseconds;
+                
+                Thread.Sleep(idleTime);
+                actualArrivalTime = clock;
+                Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {actualArrivalTime} to station {t.StationID}");
+                Console.WriteLine($"Actual arrival: {actualArrivalTime} | Travel time (ms): {idleTime} | Scheduled time: {t.ArrivalTime.GetValueOrDefault()}");
+            }
         }
 
-        public void Load(string path) //separator?
+        private TimeSpan ConvertTime(TimeSpan time)
         {
-
-            throw new NotImplementedException();
+            TimeSpan result = new TimeSpan(0, time.Hours, time.Minutes);
+            return result;
         }
 
+        private static void SetTimer()
+        {
+            // Create a timer with an interval in ms.
+            timer = new Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
 
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            clock += TimeSpan.FromMinutes(1.0);
+        }
     }
 }

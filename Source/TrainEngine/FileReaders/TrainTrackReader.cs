@@ -28,20 +28,23 @@ namespace TrainEngine.FileReaders
 
                         foreach(var node in trackNodes)
                         {
-                            if (node == '[' || node == ']')
+                            if (node == '[' || node == ']') //Unclear if they are trackpieces or not
                             {
                                 continue;
                             }
-                            else if(node == '*')
+                            else if(node == '*') //Starting-position
                             {
+                                //Currently not supported, always starts in the same position
                                 continue;
-                                //Console.WriteLine($"Train {} Start from {}");
                             }
                             else
                             {
+                                if (node == '=')
+                                {
+                                    isCrossing = true;
+                                }
                                 int.TryParse(node.ToString(), out stationID);
                                 trackID++;
-                                //Console.WriteLine(stationID);
                             }
                             TrackList.Add(new Track(trackID, stationID, trackID, trackID, isCrossing));
                         }
