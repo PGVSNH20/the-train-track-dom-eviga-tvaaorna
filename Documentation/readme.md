@@ -122,7 +122,6 @@ TrainTracks Hur vill vi att den ska kunna göra?
 * Ska den flyttas på en räls?
 * Om den ska flyttas på given tid måste den fungera.
 * Ska vi ha en timer?
-* OK! risk att Fabbe somnar
 * Vi behöver hur många räls delar det är på sträckan till en station, eller alternativt 
 * Vi behöver ett ex. Johan
  * Strecken på kartan 1km
