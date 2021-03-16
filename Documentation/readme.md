@@ -116,5 +116,5 @@ Nästa steg är:
  * Att tågen också rör sig på tågbanan och inte bara dräller runt i tidtabellerna. (false)
  * Carlos ska kunna stoppa ett tåg. (false)
  * Om tiderna överlappas så ska inte tågen att gå. Gör en check i tidtabellerna. (semi true)
- * Fixa passagerarna (false)
+ * Fixa passagerarna (true)
 
