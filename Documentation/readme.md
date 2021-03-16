@@ -118,3 +118,16 @@ Nästa steg är:
  * Om tiderna överlappas så ska inte tågen att gå. Gör en check i tidtabellerna. (semi true)
  * Fixa passagerarna (true)
 
+TrainTracks Hur vill vi att den ska kunna göra?
+* Ska den flyttas på en räls?
+* Om den ska flyttas på given tid måste den fungera.
+* Ska vi ha en timer?
+* OK! risk att Fabbe somnar
+* Vi behöver hur många räls delar det är på sträckan till en station, eller alternativt 
+* Vi behöver ett ex. Johan
+ * Strecken på kartan 1km
+ * Tågets maxhastighet
+ * beräkna tidsåtgång för färd
+* Fabbe
+ * Hur många spår mellan stationerna för att räkna ut hur lång tid varje spår tar. På så vis kan vi få tåget att åka framåt med en timer.
+ * Vi kan behöva göra om Sleep.
