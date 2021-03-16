@@ -37,10 +37,9 @@ namespace TrainEngine
             TimeTable.Save(timeTables);
 
             trainPlanner.StartTrains(timeTables);
-        }
-        
+        }        
         //plan.NextStation(station1).NextStation(station2).NextStation(station1).NextStation(station2)
 
-
+        // To stop train use Alt + F4!!!
     }
 }

@@ -20,6 +20,8 @@ namespace TrainEngine
             StationID = stationID;
             DepartureTime = departureTime;
             ArrivalTime = arrivalTime;
+
+
         }
 
         public static List<TimeTable> Load()
@@ -74,7 +76,7 @@ namespace TrainEngine
 
         public static void Save(List<TimeTable> timeTables)
         {
-
+            timeTables = timeTables.OrderBy(p => p.ArrivalTime).ToList();
             string path = "Data/testlog.txt";            
             
             StringBuilder content = new StringBuilder("");

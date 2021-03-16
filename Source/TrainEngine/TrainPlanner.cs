@@ -24,12 +24,10 @@ namespace TrainEngine
         private List<Thread> threads = new List<Thread>();
 
         private static Timer timer;
-        private static TimeSpan clock = DateTime.Now.TimeOfDay;
+        private static TimeSpan? clock = null;
 
         public TrainPlanner(List<Train> trains) //Espressomachine
         {
-            SetTimer();
-
             Trains = trains;
         }
 
@@ -93,7 +91,12 @@ namespace TrainEngine
         public void ExecutePlan(List<TimeTable> plan) //TODO: Time based on travel-distance with track-pieces
         {
             //TODO: Only once
-            clock = plan[0].DepartureTime.GetValueOrDefault();
+            
+            if(clock == null)
+            {
+                clock = plan[0].DepartureTime.GetValueOrDefault();
+                SetTimer();
+            }
 
             TimeSpan? actualArrivalTime = null;
             //Sort somewhere
