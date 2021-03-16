@@ -110,7 +110,11 @@ Nästa steg är:
  * Fixa klocka (true)
  * Få till mer avancerat track (false)
  * Starta stoppa (semi true)
- * Behöver en sortering på alla ställen där vi hanterar tidtabeller. Detta för att t.ex om tågen är ute och åker så ska de inte behöva åka bakåt eller komma 3 timmar för tidigt.    Allt ska hamna i rätt ordning. (false)
+ * Behöver en sortering på alla ställen där vi hanterar tidtabeller. Detta för att t.ex om tågen är ute och åker så ska de inte behöva åka bakåt eller komma 3 timmar för tidigt.    Allt ska hamna i rätt ordning. (semi true)
+   * TimeTable
+   * 
  * Att tågen också rör sig på tågbanan och inte bara dräller runt i tidtabellerna. (false)
  * Carlos ska kunna stoppa ett tåg. (false)
+ * Om tiderna överlappas så ska inte tågen att gå. Gör en check i tidtabellerna. (semi true)
+ * Fixa passagerarna (false)
 
