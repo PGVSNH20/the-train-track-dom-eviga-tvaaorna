@@ -107,7 +107,7 @@ Nästa steg är:
  * Fixa läsning av tracks (true)(Tror Johan fixade den.)
  * Skriv till fil (True)
  * Få tågen att röra sig efter banan (semi true)
- * Fixa klocka (false)
+ * Fixa klocka (true)
  * Få till mer avancerat track (false)
  * Starta stoppa (semi true)
  * Behöver en sortering på alla ställen där vi hanterar tidtabeller. Detta för att t.ex om tågen är ute och åker så ska de inte behöva åka bakåt eller komma 3 timmar för tidigt.    Allt ska hamna i rätt ordning. (false)
