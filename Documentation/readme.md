@@ -131,3 +131,6 @@ TrainTracks Hur vill vi att den ska kunna göra?
 * Fabbe
  * Hur många spår mellan stationerna för att räkna ut hur lång tid varje spår tar. På så vis kan vi få tåget att åka framåt med en timer.
  * Vi kan behöva göra om Sleep.
+
+* Vi behöver en timer
+* Vi behöver nåt som håller koll på förseningar
