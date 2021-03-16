@@ -9,12 +9,15 @@ namespace TrainEngine
         public int ID { get; }
         public string StationName { get; }
         public bool EndStation { get; }
+        public List<Passenger> Passengers { get; }
 
         public Station(int id, string stationName, bool endStation)
         {
             ID = id;
             StationName = stationName;
             EndStation = endStation;
+
+            Passengers = new List<Passenger>();
         }
     }
 }

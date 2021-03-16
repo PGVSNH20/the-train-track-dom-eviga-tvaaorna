@@ -19,7 +19,7 @@ namespace TrainEngine
 
         private List<TimeTable> timeTables;
         private List<Passenger> passengers;
-        private List<Station> stations;
+        public static List<Station> stations;
         private List<Train> trains;
         private TrackManager track = new TrackManager();
         private TrainPlanner trainPlanner;

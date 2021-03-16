@@ -106,6 +106,8 @@ namespace TrainEngine
                                (int)ConvertTime(actualArrivalTime.GetValueOrDefault()).TotalMilliseconds;
                 
                 Thread.Sleep(idleTime);
+                //Fix later
+                //Passenger.MovePassengers(ref Trains[t.TrainID].Passengers, Operator.stations[t.StationID].Passengers);
                 actualArrivalTime = clock;
                 Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {actualArrivalTime} to station {t.StationID}");
                 Console.WriteLine($"Actual arrival: {actualArrivalTime} | Travel time (ms): {idleTime} | Scheduled time: {t.ArrivalTime.GetValueOrDefault()}");

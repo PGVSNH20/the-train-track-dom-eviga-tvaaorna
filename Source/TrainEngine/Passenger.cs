@@ -32,7 +32,6 @@ namespace TrainEngine
                 fromPassengerList.Add(toPassengerList[randomAgain]);
                 toPassengerList.RemoveAt(randomAgain);
             }
-
         }
     }
 }
