@@ -133,3 +133,6 @@ TrainTracks Hur vill vi att den ska kunna göra?
 
 * Vi behöver en timer
 * Vi behöver nåt som håller koll på förseningar
+
+Tåg 2 hastighet 120 km/h blir varje TrackPiece 6,57 km och totalsträckan är 46 km och färdas på 23 min 
+Tåg 3 hastighet 50 km/h då blir totalsträckan 43 km tåget avverkar den sträckan på 52 min.
