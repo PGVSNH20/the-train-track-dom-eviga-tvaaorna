@@ -116,5 +116,23 @@ Nästa steg är:
  * Att tågen också rör sig på tågbanan och inte bara dräller runt i tidtabellerna. (false)
  * Carlos ska kunna stoppa ett tåg. (false)
  * Om tiderna överlappas så ska inte tågen att gå. Gör en check i tidtabellerna. (semi true)
- * Fixa passagerarna (false)
+ * Fixa passagerarna (true)
 
+TrainTracks Hur vill vi att den ska kunna göra?
+* Ska den flyttas på en räls?
+* Om den ska flyttas på given tid måste den fungera.
+* Ska vi ha en timer?
+* Vi behöver hur många räls delar det är på sträckan till en station, eller alternativt 
+* Vi behöver ett ex. Johan
+ * Strecken på kartan 1km
+ * Tågets maxhastighet
+ * beräkna tidsåtgång för färd
+* Fabbe
+ * Hur många spår mellan stationerna för att räkna ut hur lång tid varje spår tar. På så vis kan vi få tåget att åka framåt med en timer.
+ * Vi kan behöva göra om Sleep.
+
+* Vi behöver en timer
+* Vi behöver nåt som håller koll på förseningar
+
+Tåg 2 hastighet 120 km/h blir varje TrackPiece 6,57 km och totalsträckan är 46 km och färdas på 23 min 
+Tåg 3 hastighet 50 km/h då blir totalsträckan 43 km tåget avverkar den sträckan på 52 min.
