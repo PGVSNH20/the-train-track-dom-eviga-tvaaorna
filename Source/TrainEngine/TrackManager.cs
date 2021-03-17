@@ -17,7 +17,7 @@ namespace TrainEngine
             //    Console.Write(track);
             //}
         }
-        public static int AmountTrackPieces(int firstStationID, int nextStationID)
+        public static int TrackPiecesBetweenStations(int firstStationID, int nextStationID)
         {
             var firstStation = tracks.Find(x => x.StationID == firstStationID).TrackID;
             var nextStation = tracks.Find(x => x.StationID == nextStationID).TrackID;

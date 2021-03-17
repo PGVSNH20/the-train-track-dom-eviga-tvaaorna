@@ -9,6 +9,7 @@ using Timer = System.Timers.Timer;
 namespace TrainEngine
 {
     // ALLA UTOM FABIAN GER FAN I DENNA
+    //Klotter
     /// <summary>
     /// This is an API for Mr.Carlos, codename Operator
     /// </summary>
@@ -25,17 +26,22 @@ namespace TrainEngine
 
         private static Timer timer;
         private static TimeSpan? clock = null;
-        private static double speed = 0.02; //lower is faster
+        private static double speed = 0.1; //lower is faster
+
+        private static Timer tracker;
 
         public TrainPlanner(List<Train> trains) //Espressomachine
         {
             Trains = trains;
         }
 
-        ~TrainPlanner()
+        ~TrainPlanner() //Destructor
         {
             timer.Stop();
             timer.Dispose();
+
+            tracker.Stop();
+            tracker.Dispose();
         }
 
         #region Fluent
@@ -101,23 +107,33 @@ namespace TrainEngine
                 clock = plan[0].DepartureTime.GetValueOrDefault();
                 SetTimer();
             }
-            
-            foreach (var t in plan)
+
+            int lastStation = 1;
+
+            for (int i = 0; i < plan.Count-1; i++) //(var t in plan)
             {
-                int idleTime = (int)ConvertTime(t.ArrivalTime.GetValueOrDefault()).TotalMilliseconds -
-                               (int)ConvertTime(actualArrivalTime.GetValueOrDefault()).TotalMilliseconds;
+                int idleTime = (int)ConvertTime(plan[i+1].ArrivalTime.GetValueOrDefault()).TotalMilliseconds -
+                               (int)ConvertTime(plan[i].DepartureTime.GetValueOrDefault()).TotalMilliseconds;
+                //float idleTime = CalculateTrainSpeed(t.)
                 if (idleTime < 0)
                 {
                     idleTime = 0;
                 }
-                Thread.Sleep((int)(idleTime * speed));
+                int tpbs = TrackManager.TrackPiecesBetweenStations(lastStation, plan[i].StationID);
+                for (int j = 0; j < tpbs; j++)
+				{
+                    Console.WriteLine($"Train {Trains[plan[i].TrainID].Name} has passed train track {j}.");
+                    Thread.Sleep((int)(idleTime * speed));
+                }
+                lastStation = plan[i].StationID;
 
+                //Thread.Sleep((int)(idleTime * speed));
                 //Fix later
                 //Passenger.MovePassengers(ref Trains[t.TrainID].Passengers, Operator.stations[t.StationID].Passengers);
 
                 actualArrivalTime = clock;
-                Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {actualArrivalTime} to station {t.StationID}");
-                Console.WriteLine($"Actual arrival: {actualArrivalTime} | Travel time (ms): {idleTime} | Scheduled time: {t.ArrivalTime.GetValueOrDefault()}");
+                Console.WriteLine($"{Trains[plan[i].TrainID].Name} arrived at {actualArrivalTime} to station {plan[i].StationID}");
+                Console.WriteLine($"Actual arrival: {actualArrivalTime} | Travel time (ms): {idleTime} | Scheduled time: {plan[i].ArrivalTime.GetValueOrDefault()}");
             }
         }
 
@@ -140,22 +156,37 @@ namespace TrainEngine
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             clock += TimeSpan.FromMinutes(1.0);
-            Console.WriteLine("chugga");
+            //Console.WriteLine("chugga");
 
             TimeSpan choo = (TimeSpan)clock;
             if (choo.Minutes % 7 == 0)
             {
-                Console.WriteLine("choo choo!");
+                //Console.WriteLine("choo choo!");
             }
         }
 
-        //float trackPieceTime = trackPieceLength / time; //How long it takes to traverse a trackpiece
+        private void SetTracker(int time)
+		{
+            // Create a timer with an interval in ms.
+            tracker = new Timer(time * speed);
+            // Hook up the Elapsed event for the timer. 
+            tracker.Elapsed += OnTrackerEvent;
+            tracker.AutoReset = false;
+            tracker.Enabled = true;
 
-        public static double CalculateTrainSpeed(int distance, float maxSpeed, float startStationTime, float endStationTime)
+            //float trackPieceTime = trackPieceLength / time; //How long it takes to traverse a trackpiece
+        }
+
+        private static void OnTrackerEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("mlem");
+        }
+
+        public static double CalculateTrainSpeed(int trackPieces, float maxSpeed, float startStationTime, float endStationTime)
         {
             float trackPieceLength = 2; //Km
 
-            float trackLength = distance * trackPieceLength; //Gets how far the train has to travel
+            float trackLength = trackPieces * trackPieceLength; //Gets how far the train has to travel
 
             float time = endStationTime - startStationTime; //How long it has between stations
 

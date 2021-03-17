@@ -9,7 +9,7 @@ namespace TrainEngine.FileReaders
     {
         public static List<Track> Load()
         {
-            string url = "Data/traintrack1.txt";
+            string url = "Data/traintrack2.txt";
             List<Track> TrackList = new List<Track>();
             try
             {
