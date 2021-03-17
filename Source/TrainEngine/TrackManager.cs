@@ -26,11 +26,19 @@ namespace TrainEngine
         }
 
         // TODO: fix name, and formula for timecounting
-        public static void TrainProgression(int distance, double speed)
+        public static void CalculateTrainSpeed(int distance, double speed, float startStationTime, float endStationTime)
         {
-            float trackPieceLength = 1;
+            float trackPieceLength = 2; //Km
 
+            float trackLength = distance * trackPieceLength;
 
+            float time = endStationTime - startStationTime;
+
+            float calcSpeed = trackLength / time;
+
+            return calcSpeed;
+
+            float trackPieceTime = trackPieceLength / time;
         }
     }
 }
