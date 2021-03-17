@@ -25,6 +25,7 @@ namespace TrainEngine
 
         private static Timer timer;
         private static TimeSpan? clock = null;
+        private static double speed = 0.2; //lower is faster
 
         public TrainPlanner(List<Train> trains) //Espressomachine
         {
@@ -90,24 +91,30 @@ namespace TrainEngine
 
         public void ExecutePlan(List<TimeTable> plan) //TODO: Time based on travel-distance with track-pieces
         {
+            TimeSpan? actualArrivalTime = null;
+
+            plan = plan.OrderBy(p => p.ArrivalTime).ToList();
+
             //TODO: Only once
-            
-            if(clock == null)
+            if (clock == null)
             {
                 clock = plan[0].DepartureTime.GetValueOrDefault();
                 SetTimer();
             }
-
-            TimeSpan? actualArrivalTime = null;
-            //Sort somewhere
+            
             foreach (var t in plan)
             {
                 int idleTime = (int)ConvertTime(t.ArrivalTime.GetValueOrDefault()).TotalMilliseconds -
                                (int)ConvertTime(actualArrivalTime.GetValueOrDefault()).TotalMilliseconds;
-                
-                Thread.Sleep(idleTime);
+                if (idleTime < 0)
+                {
+                    idleTime = 0;
+                }
+                Thread.Sleep((int)(idleTime * speed));
+
                 //Fix later
                 //Passenger.MovePassengers(ref Trains[t.TrainID].Passengers, Operator.stations[t.StationID].Passengers);
+
                 actualArrivalTime = clock;
                 Console.WriteLine($"{Trains[t.TrainID].Name} arrived at {actualArrivalTime} to station {t.StationID}");
                 Console.WriteLine($"Actual arrival: {actualArrivalTime} | Travel time (ms): {idleTime} | Scheduled time: {t.ArrivalTime.GetValueOrDefault()}");
@@ -123,7 +130,7 @@ namespace TrainEngine
         private static void SetTimer()
         {
             // Create a timer with an interval in ms.
-            timer = new Timer(1000);
+            timer = new Timer(1000 * speed);
             // Hook up the Elapsed event for the timer. 
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
@@ -133,6 +140,13 @@ namespace TrainEngine
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             clock += TimeSpan.FromMinutes(1.0);
+            Console.WriteLine("chugga");
+
+            TimeSpan choo = (TimeSpan)clock;
+            if (choo.Minutes % 7 == 0)
+            {
+                Console.WriteLine("choo choo!");
+            }
         }
     }
 }
