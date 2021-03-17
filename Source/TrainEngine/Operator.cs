@@ -31,9 +31,8 @@ namespace TrainEngine
             stations = StationReader.Load();
             trains = TrainReader.Load();
             trainPlanner = new TrainPlanner(trains);
-
             //////////////////////
-            timeTables.Add(new TimeTable(2, 3, null, new TimeSpan(12, 55, 00)));
+            //timeTables.Add(new TimeTable(2, 3, new TimeSpan(10, 51, 00), new TimeSpan(10, 49, 00)));
             TimeTable.Save(timeTables);
 
             trainPlanner.StartTrains(timeTables);

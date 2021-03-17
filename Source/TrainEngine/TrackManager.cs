@@ -22,7 +22,7 @@ namespace TrainEngine
             var firstStation = tracks.Find(x => x.StationID == firstStationID).TrackID;
             var nextStation = tracks.Find(x => x.StationID == nextStationID).TrackID;
 
-            return nextStation - firstStation;
+            return nextStation - firstStation + 1;
         }
     }
 }
