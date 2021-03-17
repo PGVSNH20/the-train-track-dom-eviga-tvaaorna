@@ -25,7 +25,7 @@ namespace TrainEngine
 
         private static Timer timer;
         private static TimeSpan? clock = null;
-        private static double speed = 0.2; //lower is faster
+        private static double speed = 0.02; //lower is faster
 
         public TrainPlanner(List<Train> trains) //Espressomachine
         {
@@ -147,6 +147,26 @@ namespace TrainEngine
             {
                 Console.WriteLine("choo choo!");
             }
+        }
+
+        //float trackPieceTime = trackPieceLength / time; //How long it takes to traverse a trackpiece
+
+        public static double CalculateTrainSpeed(int distance, float maxSpeed, float startStationTime, float endStationTime)
+        {
+            float trackPieceLength = 2; //Km
+
+            float trackLength = distance * trackPieceLength; //Gets how far the train has to travel
+
+            float time = endStationTime - startStationTime; //How long it has between stations
+
+            float calcSpeed = trackLength / time; //How fast it has to go to make it to the next station
+
+            if (calcSpeed > maxSpeed)
+            {
+                Console.WriteLine($"You need to go too fast for the current train! Speed is capped to {maxSpeed}!");
+                return maxSpeed;
+            }
+            return calcSpeed;
         }
     }
 }
